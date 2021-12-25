@@ -28,7 +28,7 @@ void display_graph(vector<vector<int>> adj_matrix){
 }
 
 
-void read_graph(vector<vector<int>> &adj_matrix, string &file_name){
+void read_graph(vector<vector<int>> &adj_matrix, string &file_name, bool directed=0){
     string text;
     ifstream fp(file_name);
     bool edge_line = 0;
@@ -58,6 +58,7 @@ void read_graph(vector<vector<int>> &adj_matrix, string &file_name){
         int token_count = split_string(text, tokens, ' ');
         if(token_count != 2)
             cout << "Invalid line\n";
+
         adj_matrix[stoi(tokens[0])][stoi(tokens[1])] = 1;
         if(directed == 0)
             adj_matrix[stoi(tokens[1])][stoi(tokens[0])] = 1;
